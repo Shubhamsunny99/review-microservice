@@ -12,5 +12,7 @@ reviewRoutes.get('/get-review/:id', reviewController.getReviews)
 
 reviewRoutes.put('/update-review/:id', reviewController.updateReviews)
 
+reviewRoutes.get('/average-rating', reviewController.averageRatings)
+
 
 module.exports = reviewRoutes

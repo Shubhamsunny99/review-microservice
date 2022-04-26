@@ -48,6 +48,22 @@ module.exports = {
                     error  : err
                 })
             })
+    },
+
+    averageRatings : async (req, res) => {
+        reviewService.averageRating()
+            .then((data) => {
+                return res.json({
+                    status : 200,
+                    data  : data
+                })
+            })
+            .catch((err) => {
+                return res.json({
+                    status : 400,
+                    error  : err
+                })
+            })
     }
 
 

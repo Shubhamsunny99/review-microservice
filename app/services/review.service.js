@@ -75,5 +75,26 @@ module.exports = {
                 })
 
         })
+    },
+
+    averageRating: async () => {
+        return new Promise(async(resolve, reject) => {
+            Review.aggregate([
+                {
+                    $group:
+                    {
+                    "_id":"restuarantID",
+                    AverageValue: { $avg: "$rating" }
+                    }
+                }
+            ])
+            .then(review_D => {
+                return resolve(review_D)
+
+            }).catch(err => {
+                return reject(err)
+            })
+
+        })
     }
 }
