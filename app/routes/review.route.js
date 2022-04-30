@@ -14,5 +14,7 @@ reviewRoutes.put('/update-review/:id', reviewController.updateReviews)
 
 reviewRoutes.get('/average-rating', reviewController.averageRatings)
 
+reviewRoutes.get('/fetch-review-by-restuarant/:id' , reviewController.fetchReviewByRestuarantID)
+
 
 module.exports = reviewRoutes

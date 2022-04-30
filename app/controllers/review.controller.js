@@ -64,6 +64,22 @@ module.exports = {
                     error  : err
                 })
             })
+    },
+
+    fetchReviewByRestuarantID : async (req, res) => {
+        reviewService.fetchReviewByRestuarantID(req.params)
+            .then((data) => {
+                return res.json({
+                    status : 200,
+                    data  : data
+                })
+            })
+            .catch((err) => {
+                return res.json({
+                    status : 400,
+                    error  : err
+                })
+            })
     }
 
 

@@ -2,6 +2,7 @@
 // Database etc 
 
 const Review = require("../models/review");
+const Redis  = require('../../redis')
 
 module.exports = {
     
@@ -62,6 +63,7 @@ module.exports = {
                 .then(async reviewD => {
                     if(reviewD){
                         if(reviewD._id !== _id){
+                            await Redis.delValue(reviewObj.restuarantID)
                             return reject("Email or Mobile is Already taken")
                         }
                     }
@@ -96,5 +98,13 @@ module.exports = {
             })
 
         })
+    },
+
+    fetchReviewByRestuarantID: async (params) => {
+        return new Promise(async(resolve, reject) => {
+            let reviewData = await Review.find({restuarantID : params.id})
+            return resolve(reviewData)
+        })
     }
+
 }
